@@ -34,6 +34,6 @@ public class Recette implements Evenement{
 
 	/** Verse le montant offert en passant sur la case depart au joueur */
 	public void executer(){
-		j.verser(montant);
+		cible().verser(montant);
 	}
 }

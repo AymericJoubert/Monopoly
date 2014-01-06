@@ -41,15 +41,15 @@ public class Achat implements Evenement {
 	/** Deplace le personnage sur la case suivante selon le nombre donne par les des */
 	public void executer(){
 		if(p.proprietaire()==null){
-			int fifou = JOptionPane.showConfirmDialog(new JFrame(), j.nom()+", voulez vous acheter :"+this.nom+" ? ");
+			int fifou = JOptionPane.showConfirmDialog(new JFrame(), cible().nom()+", voulez vous acheter "+this.nom+" ? ");
 			if(fifou==0){
-				j.chosesAFaire().push(new Depenser(this.nom, j, p.prixAchat()));
-				p.setProprietaire(j);
+				cible().chosesAFaire().push(new Depenser(this.nom, cible(), p.prixAchat()));
+				p.setProprietaire(cible());
 			}
 		}
-		else if(p.proprietaire() != j){
-			JOptionPane.showMessageDialog(new JFrame(), j.nom()+", vous devez donner : "+p.loyer()+" a "+p.proprietaire().nom());
-			j.chosesAFaire().push(new Depenser(this.nom, j, p.loyer()));
+		else if(p.proprietaire() != cible()){
+			JOptionPane.showMessageDialog(new JFrame(), cible().nom()+", vous devez donner : "+p.loyer()+" a "+p.proprietaire().nom());
+			cible().chosesAFaire().push(new Depenser(this.nom, cible(), p.loyer()));
 			p.proprietaire().chosesAFaire().push(new Recette(this.nom, p.proprietaire(), p.loyer()));
 		}
 	}

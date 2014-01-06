@@ -55,9 +55,9 @@ public class Plateau implements ActionListener{
 		joue=0;
 		lancer = new JButton("Lancer les des !");
 		lancer.addActionListener(this);
-		init();
+		make();
 	}
-	public void init(){
+	public void make(){
 		fenetre.setResizable(true);
 		fenetre.setExtendedState(fenetre.MAXIMIZED_BOTH);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -268,7 +268,7 @@ public class Plateau implements ActionListener{
 
 	public void attribuerDes(int valeur) {
 		this.des.setText("Dès : "+valeur);
-		fenetre.revalidate();
+		make();
 	}
 
 	public String affiche(String p, int p2){
@@ -287,8 +287,6 @@ public class Plateau implements ActionListener{
 
 	public void actionPerformed(ActionEvent e){
 		jeu();
-		this.cases.get(5).add(new JLabel("FIFOU"), BorderLayout.NORTH);
-		fenetre.revalidate();
 	}
 
 	public Color couleur(String p){
@@ -337,14 +335,13 @@ public class Plateau implements ActionListener{
 		joue++;
 		joueurEnCours = Player.joueurs.get(joue%Player.nbJoueurs);
 		cptTour++;
-		init();
+		make();
 
 	}
 
 	public void jouer(Joueur j){
 		j.chosesAFaire().push(((Evenement)new TireDes(j)));
-		while (!j.chosesAFaire().isEmpty())
-		{
+		while (!j.chosesAFaire().isEmpty()){
 			j.chosesAFaire().pop().executer();
 			this.des.setText(((Integer)TireDes.DernierLancer).toString());
 		}

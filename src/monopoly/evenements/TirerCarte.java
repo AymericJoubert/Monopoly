@@ -45,7 +45,7 @@ public class TirerCarte implements Evenement{
 			c = Carte.chance.get(r.nextInt(Carte.chance.size()));
 		else
 			c = Carte.cc.get(r.nextInt(Carte.chance.size()));
-		JOptionPane.showMessageDialog(new JFrame(), j.nom()+" - Chance : "+c.nom()+" : "+c.getEvenement());
+		JOptionPane.showMessageDialog(new JFrame(), cible().nom()+" - Chance : "+c.nom()+" : "+c.getEvenement());
 		c.getEvenement().appliquerA(j);
 	}
 }

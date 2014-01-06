@@ -31,7 +31,7 @@ public class Depenser implements Evenement {
 
 	/** Verse le montant offert en passant sur la case depart au joueur */
 	public void executer(){
-		j.payer(montant);
+		cible().payer(montant);
 	}
 	
 	/** Empile l'evenement dans la pile du joueur */

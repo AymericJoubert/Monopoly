@@ -17,6 +17,8 @@ public interface Joueur {
     boolean enPrison() ;
     /** Emprisonne le joueur */
     void emprisonner() ;
+    /** Libere le joueur */
+    void liberer() ;
     /** Indique si le joueur est éliminé */
     boolean elimine() ;
     /** Élimine le joueur */

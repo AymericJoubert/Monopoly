@@ -1,10 +1,15 @@
 package monopoly.jeu;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 
-import monopoly.proprietes.Propriete ;
 import monopoly.evenements.Carte;
-import monopoly.evenements.Evenement ;
+import monopoly.evenements.Evenement;
+import monopoly.evenements.Emprisonnement;
+import monopoly.proprietes.Propriete;
 
 /** Classe représentant le joueur */
 public class Player implements Joueur {
@@ -49,6 +54,13 @@ public class Player implements Joueur {
 	/** Met le joueur en prison */
 	public void emprisonner(){
 		enPrison=true;
+		Emprisonnement.PRISON.put(this,0);
+	}
+	
+	/** Met le joueur en prison */
+	public void liberer(){
+		enPrison=false;
+		Emprisonnement.PRISON.remove(this);
 	}
 
 	/** @return vrai si le joueur est eliminé, faux sinon */
