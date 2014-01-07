@@ -2,18 +2,17 @@ package monopoly.jeu ;
 import monopoly.proprietes.Propriete ;
 import monopoly.evenements.Evenement ;
 
-/** Cette interface dÃ©crit une case du plateau de jeu du Monopoly */
+/** Cette interface décrit une case du plateau de jeu du Monopoly */
 public interface Case {
-    /** NumÃ©ro de la case */
+    /** Numéro de la case */
     int numero() ;
-    /** Donne la case associÃ©e au numÃ©ro spÃ©cifiÃ© */
+    /** Donne la case associée au numéro spécifié */
     Case get(int numero) ;
     /** IntitulÃ© de la case */
     String nom() ;
-    /** Titre de propriÃ©tÃ© associÃ© Ã  la case (Ã©ventuellement
+    /** Titre de propriété associé à la case éventuellement
      * <code>null</code>)*/
     Propriete propriete() ;
-    /** Ã‰vÃ©nÃ©ment susceptible de se dÃ©clencher Ã  l'arrivÃ©e sur cette
-     * case (Ã©ventuellement <code>null</code>) */
+    /** Evénement susceptible de se déclencher à l'arrivée sur cette case (éventuellement <code>null</code>) */
     Evenement evenement() ;
 }

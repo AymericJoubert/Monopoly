@@ -1,40 +1,56 @@
 package monopoly.evenements;
 
-
 import monopoly.jeu.Joueur ;
 import monopoly.jeu.Case;
 // OK
 
 import java.util.Random;
-
-/** Classe reprÃ©sentant une dÃ©pense d'utilisateur */
+/**
+ * Classe représentant une dépense d'utilisateur, celle-ci est implantée avec Evenement.
+ * @author Aymeric Joubert / Axel Delerue
+ *
+ */
 public class Depenser implements Evenement {
 	private String nom;
 	private Joueur j;
 	private int montant;
-	/** Constructeur de la classe */
+
+	/**
+	 * Constructeur de la classe Depenser, contenant trois paramètres.
+	 * @param nom Nom de la dépense
+	 * @param j Joueur effectuant la dépense
+	 * @param montant Montant de la dépense
+	 */
 	public Depenser(String nom, Joueur j, int montant){
 		this.nom = nom;
 		this.j = j;
 		this.montant = montant;
 	}
 
-	/** Retourne l'intitulÃ© de l'Ã©venement */
+	/** 
+	 * Retourne l'intitulé de l'évenement 
+	 */
 	public String nom(){
 		return nom;
 	}
 
-	/** Retourne la cible de l'Ã©venement */
+	/** 
+	 * Retourne la cible de l'évenement
+	 */
 	public Joueur cible(){
 		return j;
 	}
 
-	/** Verse le montant offert en passant sur la case depart au joueur */
+	/** 
+	 * Enlève du solde du joueur le montant
+	 */
 	public void executer(){
 		cible().payer(montant);
 	}
 	
-	/** Empile l'evenement dans la pile du joueur */
+	/** 
+	 * Empile l'évenement dans la pile du joueur 
+	 */
 	public void appliquerA(Joueur j){
 		this.j = j;
 		j.chosesAFaire().add(this);

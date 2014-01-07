@@ -7,35 +7,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 import au.com.bytecode.opencsv.CSVReader;
-
+/**
+ * Classe permettant la récupération des fichiers CSV dans des Lists.
+ * @author Aymeric Joubert / Axel Delerue
+ *
+ */
 public class Carte_CSV {
 
-
-	
-
+	/**
+	 * Permet la création d'une liste (Carte_Model ou Monopoly_Model) afin de récupérer chaque valeur des différents fichiers CSV.
+	 * @param type Soit "monopoly" si on souhaite retrouver une liste du fichier "monopoly.csv", soit "cartes" si on souhaite retrouver une liste du fichier "cartes.csv".
+	 * @param chemin Chemin vers le fichier "monopoly.csv" ou "cartes.csv"
+	 * @return La liste demandée, avec chaque élément séparé par un ";" du fichier CSV.
+	 */
 	public List instanciation_liste_cartes(String type, String chemin) {
 		List liste=null;
 		try {
+			//On utilise CSVReader (Sous Licence Apache 2.0) afin de simplifier la tâche.
 			CSVReader csv = new CSVReader(new InputStreamReader(new FileInputStream(chemin), "UTF-8"), ';');;
 			String[] next_line=null;		
 			try {
 				next_line=csv.readNext();
+				//Si le type du csv est de type "cartes"
 				if(type=="cartes") {
+					//On créé une liste de "cartes"
 					liste = new ArrayList<Carte_Model>();
+					//Tant qu'il y a une valeur disponible dans le fichier CSV...
 					while((next_line = csv.readNext()) != null) {
 
+						//On récupère les différentes informations.
 						int numero = Integer.parseInt(next_line[0]);
 						String nom = next_line[1];
 						String intitule = next_line[2];
 						String evenement = next_line[3];
-						String parametres = next_line[4];					
+						String parametres = next_line[4];		
+						//Et on ajoute l'élément à la liste
 						liste.add(new Carte_Model(numero, nom, intitule, evenement, parametres));
 					}
 				}
-				
+				//Si le type du csv est de type "monopoly"
 				if(type=="monopoly") {
+					//On créé une liste de cases monopoly
 					liste = new ArrayList<Monopoly_Model>();
+					//Tant qu'il y a une valeur disponible dans le fichier CSV...
 					while((next_line = csv.readNext()) != null) {
+						
+						//On récupère les différentes informations, en évitant les problèmes dûs aux "cast" et au valeurs vides.
 						String loyer = null;
 						int numero = Integer.parseInt(next_line[0]);
 						String nom = next_line[1];
@@ -57,57 +74,20 @@ public class Carte_CSV {
 						}
 						if(next_line[4].equals("gares"))
 							loyer = next_line[7];
+						//Puis on ajoute la case à la liste
 						liste.add(new Monopoly_Model(numero, nom, evenement, type_evenement, groupe, achat, cout_immobilier, loyer));
 					}
 				}
 				
+				//Différentes erreurs possibles.
 			} catch (IOException e) {
-				System.out.println("ProblÃ¨me de lecture");
+				System.out.println("Problème de lecture");
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("ProblÃ¨me d'accÃ¨s au CSV");
+			System.out.println("Problème d'accès au CSV");
 		} catch (Exception e){
-			System.out.println("Problème d'encodage des caractères.")	;		
+			System.out.println("Problème d'encodage des caractères.");		
 		}
 		return liste;
 	}
-
-/*	public void instanciation_liste_partie_joueurs() {
-		try {
-			CSVReader csv = new CSVReader(new FileReader(chemin_partie_joueurs), ';');;
-			String[] next_line=null;		
-			try {
-				next_line=csv.readNext();
-				while((next_line = csv.readNext()) != null) {
-					int numero = Integer.parseInt(next_line[0]);
-					String nom = next_line[1];
-					String intitule = next_line[2];
-					String evenement = next_line[3];
-					String parametres = next_line[4];
-					liste.add(new Carte_Model(numero, nom, intitule, evenement, parametres));
-				}
-			} catch (IOException e) {
-				System.out.println("ProblÃ¨me de lecture");
-			}
-		} catch (FileNotFoundException e) {
-			System.out.println("ProblÃ¨me d'accÃ¨s au CSV");
-		}
-	}*/
-	
-	
-	
-	
-	
-	
-	
-	/*public static void main(String[] args) {
-		Carte_CSV test = new Carte_CSV();
-		List<Carte_Model> list = test.instanciation_liste_cartes("monopoly","./config/monopoly.csv");
-		Iterator<Carte_Model> ite = list.iterator();
-		while(ite.hasNext()) {
-			System.out.println(ite.next());
-		}
-		
-	}*/
-
 }

@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
-
 /**
- * Classe qui contient les propriÃ©tÃ©es par groupe immobillier
+ * Classe Groupes qui contient les propriétés par groupe de propritétés et qui étend Groupe
+ * @author Aymeric Joubert / Axel Delerue
+ *
  */
 public class Groupes implements Groupe{
 
@@ -21,48 +22,53 @@ public class Groupes implements Groupe{
 	// Les proprietÃ©es appartenant au groupe immobilier
 	private ArrayList<Propriete> proprietes = new ArrayList<Propriete>();
 
+	/**
+	 * Constructeur de la classe Groupes prenant en compte 2 paramètres
+	 * @param nom Nom du groupe des propriétés
+	 * @param cout Coût du groupe
+	 */
 	public Groupes(String nom, int cout){
 		this.nom = nom;
 		this.cout = cout;
 		groupes.put(nom,this);
 	}
+	
 	/**
-	 * methode de recuperation le nom du groupe
-	 * @return un string comportant le nom du groupe
+	 * Nom du groupe
+	 * @return Nom du groupe
 	 */
 	public String nom(){
 		return nom;
 	}
 
 	/**
-	 * retourne le cout d'achat d une maison ou d'un hotel pour le groupe immobilier
-	 * @return un int correspondant au cout d'une construction
+	 * Retourne le coût d'achat d une maison ou d'un hôtel pour le groupe immobilier
+	 * @return Coût d'une construction
 	 */
 	public int coutImmo(){
 		return cout;
 	}
 
 	/**
-	 * methode qui renvoie les proprietees contenues dans le groupe immobilier
-	 * @return une list comportant les proprietees qui compose le groupe immobilier  
+	 * Méthode qui renvoie les propriétés contenues dans le groupe immobilier
+	 * @return Une liste comportant les propriétés qui composent le groupe immobilier  
 	 */
 	public List<Propriete> composition(){
 		return proprietes;
 	}
 
 	/**
-	 * Recherche l'existance du groupe dont le nom est passe en paramtre
-	 * @param nom Nom du groupe recherche
-	 * @return le groupe recherche ou null si il existe pas
+	 * Recherche l'existance du groupe dont le nom est passé en paramètre
+	 * @param nom Nom du groupe recherché
+	 * @return Le groupe recherche ou null si il n'existe pas
 	 */
 	public Groupe get(String nom){
 		return groupes.get(nom);
 	}
 
 	/**
-	 * Methode qui teste si le groupe appartient a un seul proprietaire 
-	 * @return Renvoie un booleen, egale a true si le proprietaire est le meme pour toutes les
-	 * proprietees du groupe
+	 * Methode qui teste si le groupe appartient à un seul propriétaire 
+	 * @return Renvoie un booléen, true si le propriétaire est le même pour toutes les propriétés du groupe sinon false
 	 */
 	public boolean proprietaireUnique(){
 		boolean result = true;
@@ -78,16 +84,16 @@ public class Groupes implements Groupe{
 	}
 
 	/**
-	 * Ajoute une propriÃ©tÃ© au groupe
-	 * @param p Propriete Ã  ajouter au groupe
+	 * Ajoute une propriété au groupe
+	 * @param p Propriété à ajouter au groupe
 	 */
 	public void add(Propriete p){
 		proprietes.add(p);
 	}
 
 	/**
-	 * Retourne les principaux caracteriques du Groupe
-	 * @return Une chaine de caracteres qui definit le groupe
+	 * Retourne les principales caractériques du Groupe
+	 * @return Une chaîne de caractères qui définit le groupe
 	 */
 	public String toString(){
 		String result = "";

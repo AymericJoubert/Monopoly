@@ -4,7 +4,11 @@ import monopoly.jeu.Joueur;
 import monopoly.jeu.Case;
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * Classe Terrain avec toutes les informations qu'un terrain a besoin et qui étend Monopole
+ * @author Aymeric Joubert / Axel Delerue
+ *
+ */
 public class Terrain implements Propriete{
 	private int num;
 	private Case position;
@@ -17,6 +21,16 @@ public class Terrain implements Propriete{
 	private int coutImmobilier;
 	private int [] loyer;
 
+	/**
+	 * Constructeur de la classe Terrain prenant en compte 7 paramètres
+	 * @param num Numéro du terrain
+	 * @param position Position du terrain (Case)
+	 * @param nom Nom du terrain
+	 * @param prix Prix du terrain
+	 * @param groupe Groupe auquel appartient le terrain
+	 * @param coutImmobilier Coût immobilier du terrain
+	 * @param loyer Loyers du terrain
+	 */
 	public Terrain(int num, Case position, String nom, int prix, Groupe groupe, int coutImmobilier, int [] loyer){
 		this.num = num;
 		this.position = position;
@@ -29,32 +43,39 @@ public class Terrain implements Propriete{
 		niveauImmobilier=0;
 		proprietaire = null;
 	}
-
-	/** La case du plateau de jeu associÃ©e Ã  ce titre de propriÃ©tÃ© */
+	
+	/**
+	 *  @return La case du plateau de jeu associé à ce titre de propriété
+     */
 	public Case position(){
 		return position;
 	}
 
-	/** Nom de la propriÃ©tÃ© (le mÃªme que la case en principe) */
+	/** 
+	 * @return Nom du terrain 
+	 */
 	public String nom(){
 		return nom;
 	}
 
-	/** Indique si la propriÃ©tÃ© est hypothÃ©quÃ©e */
+	/** 
+	 * @return True si la propriété est hypothèquable, False sinon
+	 */
 	public boolean hypotheque(){
 		return hypotheque;
 	}
 
-	/** HypothÃ¨que la propriÃ©tÃ© (en procurant ainsi des liquiditÃ©s au
-	 * propriÃ©taire pour une valeur moitiÃ© du prix d'achat) */
+	/** 
+	 * Hypothèque la propriété (en procurant ainsi des liquidités au propriétaire pour une valeur moitié du prix d'achat)
+	 */
 	public void hypothequer(){
 		proprietaire.verser(prix/2);
 		hypotheque=true;
 	}
 
-	/** LÃ¨ve l'hypothÃ¨que (si le joueur possÃ¨de les liquiditÃ©s
-	 * suffisantes soit la valeur hypothÃ©caire + 10%)
-	 * @return true si l'hypothÃ¨que est levÃ©e, false sinon */
+	/** 
+	 * Lève l'hypothèque (si le joueur possède les liquidités suffisantes soit la valeur hypothècaire + 10%)
+	 * @return True si l'hypothèque est levée, False sinon */
 	public boolean deshypothequer(){
 		if(proprietaire.payer((int)((prix/2)*1.1))){
 			hypotheque=false;
@@ -63,19 +84,26 @@ public class Terrain implements Propriete{
 		return false;
 	}
 
-	/** Prix d'achat */
+	/** 
+	 * @return Prix d'achat 
+	 */
 	public int prixAchat(){
 		return prix;
 	}
 
-	/** Le groupe auquel est rattachÃ©e la propriÃ©tÃ© */
+	/** 
+	 * @return Le groupe auquel est rattaché la propriété
+	 */
 	public Groupe groupe(){
 		return groupe;
 	}
 
-	/** Indique si la propriÃ©tÃ© est constructible */
+	/** 
+	 * @return True si la propriété est constructible, False sinon 
+	 */
 	public boolean constructible(){
 		boolean construct=true;
+		//Si le groupe est possédé par un et un seul joueur
 		if(groupe.proprietaireUnique()){
 			for(Propriete p : groupe.composition()){
 				if((p.hypotheque()) || (p.niveauImmobilier() < niveauImmobilier))
@@ -85,10 +113,9 @@ public class Terrain implements Propriete{
 		return construct;
 	}
 
-	/** Construit un bÃ¢timent sur cette propriÃ©tÃ© si c'est possible
-	 * (cf. rÃ¨gles de constructibilitÃ© et liquiditÃ©s du joueur).
-	 * @return true si la construction a pu Ãªtre rÃ©alisÃ©e, false
-	 * sinon */
+	/** Construit un bâtiment sur cette propriété si c'est possible (cf. règles de constructibilité et liquidités du joueur).
+	 * @return True si la construction a pu être réalisée, False sinon 
+	 */
 	public boolean construire(){
 		if(constructible() && proprietaire.payer(coutImmobilier)){
 			niveauImmobilier++;
@@ -98,11 +125,9 @@ public class Terrain implements Propriete{
 			return false;
 	}
 
-
-	/** DÃ©truit un bÃ¢timent sur cette propriÃ©tÃ© si c'est possible (et
-	 * reverse alors au joueur la moitiÃ© du prix d'achat des
-	 * bÃ¢timents) 
-	 * @return true si un bÃ¢timent a Ã©tÃ© dÃ©truit, false sinon */
+	/**
+ 	 * Détruit un bâtiment sur cette propriété si c'est possible (et reverse alors au joueur la moitié du prix d'achat des bâtiments) 
+	 * @return True si un bâtiment a été détruit, False sinon */
 	public boolean detruire(){
 		if(niveauImmobilier > 0){
 			niveauImmobilier--;
@@ -114,29 +139,36 @@ public class Terrain implements Propriete{
 		}
 	}
 
-
-	/** PropriÃ©taire du titre (Ã©ventuellement <code>null</code>) */
+	/** 
+	 * @return Propriétaire du titre (éventuellement <code>null</code>)
+	 */
 	public Joueur proprietaire(){
 		return proprietaire;
 	}
 
-
-	/** Montant du loyer Ã  percevoir */
+	/** 
+	 * @return Montant du loyer à percevoir 
+	 */
 	public int loyer(){
 		return loyer[niveauImmobilier];
 	}
 
-	/** Niveau des constructions (0 = terrain nu, 1 Ã  4 = nb de
-	 * maisons, 5 = hÃ´tel)  */
+	/** 
+	 * @return Niveau des constructions (0 = terrain nu, 1 à 4 = nombre de maisons, 5 = hôtel) 
+	 */
 	public int niveauImmobilier(){
 		return niveauImmobilier();
 	}
-
-	public void setProprietaire(Joueur j){
-		proprietaire = j;
-	}
 	
+	/**
+	 * Attribuer un terrain à une case.
+	 * @param c Case où la position doit être attribuée
+	 */
 	public void setCase(Case c){
 		this.position = c;
+	}
+	
+	public void setProprietaire(Joueur j){
+		proprietaire = j;
 	}
 }
