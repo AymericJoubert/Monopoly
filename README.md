@@ -3,7 +3,7 @@ Monopoly
 
 
 
-COMPILER LES SOURCES ET LANCER LE JEU SANS LE JAR
+Compiler les sources et lancer le jeu sans le jar
 -------------------------------------------------
 
 Ouvrir un terminal, se placer dans le repertoire souhaité, entrer les commandes :
@@ -24,7 +24,7 @@ javac -sourcepath sources -d classes sources/monopoly/proprietes/*.java
 java -classpath classes Lancement config/monopoly.csv config/cartes.csv
 
 
-COMPILER LES SOURCES ET LANCER LE JEU AVEC LE JAR
+Compiler les sources et lancer le jeu avec le jar
 -------------------------------------------------
 
 Ouvrir un terminal, se placer dans le repertoire souhaité, entrer les commandes :
