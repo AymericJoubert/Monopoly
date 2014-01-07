@@ -2,13 +2,13 @@ Monopoly
 ========
 
 
-=====================================================
-= COMPILER LES SOURCES ET LANCER LE JEU SANS LE JAR =
-=====================================================
+
+COMPILER LES SOURCES ET LANCER LE JEU SANS LE JAR
+-------------------------------------------------
 
 Ouvrir un terminal, se placer dans le repertoire souhaité, entrer les commandes :
 
-git clone https://github.com/AymericJoubert/Monopoly.git
+git clone https://github.com/AymericJoubert/Monopoly.git \n
 javac -sourcepath sources -d classes sources/monopoly/csv/*.java
 javac -sourcepath sources -d classes sources/monopoly/evenements/*.java
 javac -sourcepath sources -d classes sources/monopoly/gui/*.java
