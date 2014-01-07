@@ -4,7 +4,7 @@ import monopoly.evenements.Evenement ;
 import java.util.*;
 
 /**
- * Classe représentant une Case, celle-ci est implantée avec Case.
+ * Classe representant une Case, celle-ci est implantee avec Case.
  * @author Aymeric Joubert / Axel Delerue
  *
  */
@@ -16,11 +16,11 @@ public class Cases implements Case {
     private Evenement evenement;
 
     /**
-     * Constructeur de la classe Cases, celui-ci prend 4 paramètres
-     * @param numero Numéro de la case
+     * Constructeur de la classe Cases, celui-ci prend 4 parametres
+     * @param numero Numero de la case
      * @param nom Nom de la case
-     * @param propriete Propriété située sur cette dite case
-     * @param evenement Evénement que produit cette dite case
+     * @param propriete Propriete situee sur cette dite case
+     * @param evenement Evenement que produit cette dite case
      */
     public Cases(int numero, String nom, Propriete propriete, Evenement evenement){
     	this.numero = numero;
@@ -32,14 +32,14 @@ public class Cases implements Case {
     }
 
     /** 
-     * Retourne le numéro de la case  
+     * Retourne le numero de la case  
      */
     public int numero(){
     	return numero;
     }
 
-    /** Retoure la case dont le numero est passé en paramètre 
-     *  @param numero Numéro de la case voulue
+    /** Retoure la case dont le numero est passe en parametre 
+     *  @param numero Numero de la case voulue
      */
     public Case get(int numero){
     	int num = numero%40;
@@ -55,14 +55,14 @@ public class Cases implements Case {
     }
     
     /** 
-     * Retourne la propriété associée à la case 
+     * Retourne la propriete associee à la case 
      */
     public Propriete propriete(){
     	return propriete;
     }
 
     /** 
-     * Retourne l'événement associé à la case 
+     * Retourne l'evenement associe à la case 
      */ 
     public Evenement evenement(){
     	return evenement;

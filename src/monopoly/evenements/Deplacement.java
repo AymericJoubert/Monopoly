@@ -7,7 +7,7 @@ import monopoly.jeu.Case;
 import monopoly.jeu.Cases;
 import monopoly.jeu.Joueur;
 /**
- * Classe représentant le déplacement d'un utilisateur, celle-ci est implantée avec Evenement.
+ * Classe representant le deplacement d'un utilisateur, celle-ci est implantee avec Evenement.
  * @author Aymeric Joubert / Axel Delerue
  *
  */
@@ -19,30 +19,30 @@ public class Deplacement implements Evenement{
 
 	/**
 	 * Constructeur de la classe Deplacement
-	 * @param j Joueur se déplaçant
+	 * @param j Joueur se deplaçant
 	 */
 	public Deplacement(Joueur j){
-		this.nom = "Déplacement";
+		this.nom = "Deplacement";
 		this.j = j;
 		this.cCible = cCible;
 	}
 	
 	/** 
-	 * Retourne le nom de l'événement (Déplacement)
+	 * Retourne le nom de l'evenement (Deplacement)
 	 */
 	public String nom(){
 		return nom;
 	}
 
 	/** 
-	 * Le joueur qui subit le déplacement 
+	 * Le joueur qui subit le deplacement 
 	 */
 	public Joueur cible(){
 		return j;
 	}
 	
 	/** 
-	 * Empile le déplacement dans la pile du joueur 
+	 * Empile le deplacement dans la pile du joueur 
 	 */
 	public void appliquerA(Joueur j){
 		this.j = j;
@@ -50,10 +50,10 @@ public class Deplacement implements Evenement{
 	}	
 	
 	/** 
-	 * Exécute le déplacement 
+	 * Execute le deplacement 
 	 */
 	public void executer(){
-		//Si la cible est n'est pas renseignée
+		//Si la cible est n'est pas renseignee
 		if(cCible == null){
 			Case c = Cases.cases.get(cible().position().numero()+TireDes.DernierLancer);
 			cible().placerSur(c);

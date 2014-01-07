@@ -10,23 +10,31 @@ import monopoly.jeu.Cases;
 import monopoly.jeu.Joueur;
 import monopoly.jeu.Player;
 
-/** Classe représentant le lancer de dès par l'utilisateur  */
+/**
+ * Classe permettant la possibilite d'amener un joueur en prison s'il passe par la case "Aller en prison", celle-ci implemente Evenement.
+ * @author Aymeric Joubert / Axel Delerue
+ *
+ */
 public class Emprisonnement implements Evenement {
 	private String nom;
 	private Joueur j;
 	public static HashMap<Joueur, Integer> PRISON = new HashMap<Joueur, Integer>();
-	/** Constructeur de la classe */
+
+	/**
+	 * Constructeur de la classe Emprisonnement
+	 * @param j Le joueur vise.
+	 */
 	public Emprisonnement(Joueur j){
 		this.nom = "Emprisonnement";
 		this.j = j;
 	}
 
-	/** Retourne l'intitulé de l'évenement */
+	/** Retourne l'intitule de l'evenement */
 	public String nom(){
 		return nom;
 	}
 
-	/** Retourne la cible de l'évenement */
+	/** Retourne la cible de l'evenement */
 	public Joueur cible(){
 		return j;
 	}

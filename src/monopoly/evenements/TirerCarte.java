@@ -8,13 +8,22 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import monopoly.jeu.Joueur;
-
+/**
+ * Classe permettant le tirage de carte pour le joueur, celle-ci implemente Evenement.
+ * @author Aymeric Joubert / Axel Delerue
+ *
+ */
 public class TirerCarte implements Evenement{
 	private Joueur j;
 	private String type;
 	public static int DernierLancer;
 
-	/** Constructeur de la classe */
+
+	/**
+	 * Constructeur de la classe TirerCarte, celui-ci possede 2 parametres.
+	 * @param j Joueur tirant les des
+	 * @param type Savoir si la carte est une carte "chance" ou "caisse de communaute" (cc)
+	 */
 	public TirerCarte(Joueur j, String type){
 		this.j = j;
 		this.type = type;

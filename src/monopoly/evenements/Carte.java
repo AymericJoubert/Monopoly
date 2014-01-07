@@ -5,7 +5,7 @@ import monopoly.jeu.Joueur;
 import java.util.*;
 
 /**
- * Classe décrivant le modèle d'une Carte permettant à un joueur de posséder des Cartes.
+ * Classe decrivant le modele d'une Carte permettant à un joueur de posseder des Cartes.
  * @author Aymeric Joubert / Axel Delerue
  *
  */
@@ -18,7 +18,7 @@ public class Carte {
 	
 	/** Constructeur de la classe Carte
 	 * @param nom Nom de la carte
-	 * @param e Evénement déclenché par la carte
+	 * @param e Evenement declenche par la carte
 	 */
 	public Carte(String nom, String type, Evenement e){
 		this.nom = nom;
@@ -27,7 +27,7 @@ public class Carte {
 		//Si la carte est de type chance
 		if(type.equals("chance"))
 			this.chance.add(this);
-		//Si la carte est de type caisse de communautée
+		//Si la carte est de type caisse de communautee
 		else
 			this.cc.add(this);		
 	}
@@ -40,14 +40,14 @@ public class Carte {
 	}
 
 	/**
-	 * @return Joueur possédant la carte
+	 * @return Joueur possedant la carte
 	 */
 	public Joueur conservePar(){
 		return j;
 	}
 	
 	/**
-	 * @return Evénement réalisé par la carte
+	 * @return Evenement realise par la carte
 	 */
 	public Evenement getEvenement(){
 		return e;
@@ -55,7 +55,7 @@ public class Carte {
 	
 	/**
 	 * Permet à un joueur de recevoir la carte
-	 * @param j Joueur réceptionnant la carte
+	 * @param j Joueur receptionnant la carte
 	 */
 	public void donnerA(Joueur j){
 		this.j = j;

@@ -6,24 +6,32 @@ import monopoly.gui.Plateau;
 import monopoly.jeu.Case;
 import monopoly.jeu.Cases;
 import monopoly.jeu.Joueur;
-
+/**
+ * Classe permettant le deplacement relatif, celle-ci implemente Evenement.
+ * @author Aymeric Joubert / Axel Delerue
+ *
+ */
 public class DeplacementRelatif implements Evenement{
 	private String nom;
 	private Joueur j;
 	private int nbCases;
 
-	/** Constructeur de la classe */
+
+	/**
+	 * Constructeur de la classe DeplacementRelatif
+	 * @param j Le joueur vise
+	 */
 	public DeplacementRelatif(Joueur j){
 		this.nom = "Deplacement Relatif";
 		this.j = j;
 	}
 
-	/** Retourne le nom de l'événement */
+	/** Retourne le nom de l'evenement */
 	public String nom(){
 		return nom;
 	}
 
-	/** Le joueur qui subit l'événement */
+	/** Le joueur qui subit l'evenement */
 	public Joueur cible(){
 		return j;
 	}

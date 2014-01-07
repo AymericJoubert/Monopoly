@@ -10,20 +10,27 @@ import javax.swing.JOptionPane;
 import monopoly.jeu.Cases;
 import monopoly.jeu.Joueur;
 
-/** Classe représentant le lancer de dès par l'utilisateur  */
+/**
+ * Classe permettant de tirer les des, celle-ci implémente Evenement.
+ * @author Aymeric Joubert / Axel Delerue
+ *
+ */
 public class TireDes implements Evenement {
 	private Joueur j;
 	public static int DernierLancer = 0;
 	public static int nbCases = 0;
 
-	/** Constructeur de la classe */
+	/** 
+	  * Constructeur de la classe TireDes
+	  * @param j Joueur tirant les des
+	  */
 	public TireDes(Joueur j){
 		this.j = j;
 	}
 
 	/** Retourne l'intitulé de l'évenement */
 	public String nom(){
-		return "Tire les dès !";
+		return "Tire les des !";
 	}
 
 	/** Retourne la cible de l'évenement */

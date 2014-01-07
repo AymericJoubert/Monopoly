@@ -14,7 +14,7 @@ import monopoly.evenements.Evenement;
 import monopoly.evenements.Emprisonnement;
 import monopoly.proprietes.Propriete;
 
-/** Classe représentant le joueur */
+/** Classe representant le joueur */
 public class Player implements Joueur {
 	private int numero;
 	private String nom;
@@ -66,7 +66,7 @@ public class Player implements Joueur {
 		Emprisonnement.PRISON.remove(this);
 	}
 
-	/** @return vrai si le joueur est eliminé, faux sinon */
+	/** @return vrai si le joueur est elimine, faux sinon */
 	public boolean elimine(){
 		return elimine;
 	}
@@ -83,16 +83,16 @@ public class Player implements Joueur {
 			}
 		}
 		if(cpt==1){
-			JOptionPane.showMessageDialog(new JFrame(), jou.nom()+"- Vous avez gagné ! Félicitations !");
+			JOptionPane.showMessageDialog(new JFrame(), jou.nom()+"- Vous avez gagne ! Felicitations !");
 		}
 	}
 
-	/** Retourne le montant de l'argent possédé par le joueur */
+	/** Retourne le montant de l'argent possede par le joueur */
 	public int especes(){
 		return especes;
 	}
 
-	/** Deduit le montant de la somme possédée par le joueur, s'il a assez  */
+	/** Deduit le montant de la somme possedee par le joueur, s'il a assez  */
 	public boolean payer(int somme){
 		if(especes < somme)
 			return false;
@@ -101,7 +101,7 @@ public class Player implements Joueur {
 		return true;	
 	}
 
-	/** Verse la somme passée en paramètre au joueur */
+	/** Verse la somme passee en paramètre au joueur */
 	public void verser(int somme){
 		especes+=somme;
 	}
@@ -111,7 +111,7 @@ public class Player implements Joueur {
 		return position;
 	}
 
-	/** Place le joueur sur une case passée en paramètre */
+	/** Place le joueur sur une case passee en paramètre */
 	public void placerSur(Case c){
 		position = c;
 	}
@@ -132,7 +132,7 @@ public class Player implements Joueur {
 		return null;
 	}
 
-	/** Renvoi la liste des cartes (chance ou compagnie) possédées par le joueur */ 
+	/** Renvoi la liste des cartes (chance ou compagnie) possedees par le joueur */ 
 	public List<Evenement> cartes(){
 		ArrayList<Evenement> ev = new ArrayList<Evenement>();
 		for(Carte ca : cartes){

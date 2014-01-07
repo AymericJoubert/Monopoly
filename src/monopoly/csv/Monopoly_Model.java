@@ -3,7 +3,7 @@ package monopoly.csv;
 import monopoly.evenements.*;
 import monopoly.proprietes.*;
 /**
- * Classe modèle des cases du monopoly.
+ * Classe modele des cases du monopoly.
  * @author Aymeric Joubert / Axel Delerue
  *
  */
@@ -19,11 +19,11 @@ public class Monopoly_Model {
 	String loyer;
 	
 	/**
-	 * @param numero Numéro de la case
+	 * @param numero Numero de la case
 	 * @param nom Nom de la case
-	 * @param evenement Evénement de la case (Recette, carte, monopole ou prison)
-	 * @param type_evenement Type d'événement de la case (Si cette case est un terrain, une gare ou une compagnie)
-	 * @param groupe Groupe appartenant la case (C'est en gros la couleur qui va être attribuée à la case)
+	 * @param evenement Evenement de la case (Recette, carte, monopole ou prison)
+	 * @param type_evenement Type d'evenement de la case (Si cette case est un terrain, une gare ou une compagnie)
+	 * @param groupe Groupe appartenant la case (C'est en gros la couleur qui va être attribuee à la case)
 	 * @param achat Prix pour achat de cette dite case.
 	 * @param cout_immobilier Le coût immobilier de la case.
 	 * @param loyer Le loyer de la case.
@@ -40,15 +40,15 @@ public class Monopoly_Model {
 	}
 
 	/**
-	 * @return Numéro de la case
+	 * @return Numero de la case
 	 */
 	public int getNumero() {
 		return numero;
 	}
 
 	/**
-	 * Attribue un numéro à la case
-	 * @param numero Numéro de la case
+	 * Attribue un numero à la case
+	 * @param numero Numero de la case
 	 */
 	public void setNumero(int numero) {
 		this.numero = numero;
@@ -70,30 +70,30 @@ public class Monopoly_Model {
 	}
 
 	/**
-	 * @return Evénement de la case
+	 * @return Evenement de la case
 	 */
 	public String getEvenement() {
 		return evenement;
 	}
 
 	/**
-	 * Attribue un événement à la case
-	 * @param evenement Evénement de la case
+	 * Attribue un evenement à la case
+	 * @param evenement Evenement de la case
 	 */
 	public void setEvenement(String evenement) {
 		this.evenement = evenement;
 	}
 
 	/**
-	 * @return Type d'événement de la case
+	 * @return Type d'evenement de la case
 	 */
 	public String getType_evenement() {
 		return type_evenement;
 	}
 
 	/**
-	 * Attribue un type d'événement à la case
-	 * @param type_evenement Type d'événement de la case
+	 * Attribue un type d'evenement à la case
+	 * @param type_evenement Type d'evenement de la case
 	 */
 	public void setType_evenement(String type_evenement) {
 		this.type_evenement = type_evenement;

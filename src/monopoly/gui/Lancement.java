@@ -32,7 +32,7 @@ import monopoly.proprietes.Groupes;
 import monopoly.proprietes.Propriete;
 import monopoly.proprietes.Terrain;
 /**
- * Classe Lancement qui étend JFrame et implémente ActionListener
+ * Classe Lancement qui etend JFrame et implemente ActionListener
  * @author Aymeric Joubert / Axel Delerue
  *
  */
@@ -48,7 +48,7 @@ public class Lancement extends JFrame implements ActionListener {
 	private Plateau p;
 
 	/**
-	 * La méthode Lancement permet l'exécution du jeu
+	 * La methode Lancement permet l'execution du jeu
 	 * @param mono Fichier CSV permettant l'instanciation des cases du Monopoly
 	 * @param cartesMono Fichier CSV permettant l'instanciation des cartes du Monopoly
 	 */
@@ -71,7 +71,7 @@ public class Lancement extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Permet la création du plateau et donc du visuel pour l'utilisateur
+	 * Permet la creation du plateau et donc du visuel pour l'utilisateur
 	 */
 	public void creerGui(){
 		this.p = new Plateau("monopoly", mono);
@@ -79,7 +79,7 @@ public class Lancement extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Permet la création des cartes pour le jeu, celui-ci prenant en compte cartesMono, le paramètre déterminant l'emplacement du fichier cartes.csv
+	 * Permet la creation des cartes pour le jeu, celui-ci prenant en compte cartesMono, le parametre determinant l'emplacement du fichier cartes.csv
 	 */
 	public void creerCartes(){
 		Carte_CSV carte = new Carte_CSV();
@@ -91,7 +91,7 @@ public class Lancement extends JFrame implements ActionListener {
 				Recette r = new Recette(carteCourante.getIntitule(), null, Integer.parseInt(carteCourante.getParametres()));
 				Carte c = new Carte(carteCourante.getIntitule(), carteCourante.getGroupe(), (Evenement)r);
 			}
-			// Si la carte est une dépense
+			// Si la carte est une depense
 			else if(carteCourante.getEvenement().equals("depense")){
 				Depenser d = new Depenser(carteCourante.getIntitule(), null, Integer.parseInt(carteCourante.getParametres()));
 			}
@@ -107,7 +107,7 @@ public class Lancement extends JFrame implements ActionListener {
 			else if(carteCourante.getEvenement().equals("bonus")){
 
 			}
-			// Si la carte est une carte de frais immobiliés
+			// Si la carte est une carte de frais immobilies
 			else if(carteCourante.getEvenement().equals("frais immo")){
 
 			}
@@ -121,7 +121,7 @@ public class Lancement extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Permet la création des groupes, celle-ci repose sur le fichier "monopoly.csv", donné lui aussi en paramètre lors de l'instanciation (mono)
+	 * Permet la creation des groupes, celle-ci repose sur le fichier "monopoly.csv", donne lui aussi en parametre lors de l'instanciation (mono)
 	 */
 	public void creerGroupes()
 	{
@@ -137,7 +137,7 @@ public class Lancement extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Permet la création des cases, celle-ci repose également sur le fichier "monopoly.csv" 
+	 * Permet la creation des cases, celle-ci repose egalement sur le fichier "monopoly.csv" 
 	 */
 	public void creerCases(){
 		Carte_CSV carte = new Carte_CSV();
@@ -155,7 +155,7 @@ public class Lancement extends JFrame implements ActionListener {
 					loyer[cpt2] = Integer.parseInt(s);
 					cpt2++;
 				}
-				//On créé un nouveau terrain
+				//On cree un nouveau terrain
 				Terrain t = new Terrain(cpt, null, cas.getNom(), cas.getAchat(), Groupes.groupes.get(cas.getGroupe()), cas.getCout_immobilier(), loyer);
 				c = new Cases(cpt, cas.getNom(), (Propriete) t, (Evenement) new Achat(cas.getNom(), null, t));
 				t.setCase(c);
@@ -163,7 +163,7 @@ public class Lancement extends JFrame implements ActionListener {
 			else{
 				//Si la case est une case de type "gares"
 				if(cas.getGroupe().equals("gares")){
-					//On créé une nouvelle gare
+					//On cree une nouvelle gare
 					Gare g = new Gare(cpt, null, cas.getNom(), cas.getAchat(), Groupes.groupes.get("gares"), 2500);
 					c = new Cases(cpt, cas.getNom(), (Propriete) g, (Evenement) new Achat(cas.getNom(), null, g));
 					g.setCase(c);
@@ -171,7 +171,7 @@ public class Lancement extends JFrame implements ActionListener {
 				else{
 					//Si la case est une case de type "compagnies"
 					if(cas.getGroupe().equals("compagnies")){
-						//On créé une nouvelle compagnie
+						//On cree une nouvelle compagnie
 						Compagnie co = new Compagnie(cpt, null, cas.getNom(), cas.getAchat(), Groupes.groupes.get("compagnies"));
 						c = new Cases(cpt, cas.getNom(), (Propriete) co, (Evenement) new Achat(cas.getNom(), null, co));
 						co.setCase(c);
@@ -187,8 +187,8 @@ public class Lancement extends JFrame implements ActionListener {
 								c = new Cases(cpt, cas.getNom(), null, (Evenement) new TirerCarte(null, "chance"));
 							}
 							else{
-								//Si la case est une case de type "Caisse de communauté"
-								if(cas.getNom().equals("Caisse de communauté")){
+								//Si la case est une case de type "Caisse de communaute"
+								if(cas.getNom().equals("Caisse de communaute")){
 									c = new Cases(cpt, cas.getNom(), null, (Evenement) new TirerCarte(null, "communaute"));
 								}
 								else{
@@ -197,12 +197,12 @@ public class Lancement extends JFrame implements ActionListener {
 										c = new Cases(cpt, cas.getNom(), null, (Evenement) new Depenser("Revenu", null, Integer.parseInt(cas.getEvenement().split(",")[1])));
 									}
 									else{
-										//Si la case est une case de type "Compagnie de distribution d'électricité"
-										if(cas.getNom().equals("Compagnie de distribution d'éléctricité")){
+										//Si la case est une case de type "Compagnie de distribution d'electricite"
+										if(cas.getNom().equals("Compagnie de distribution d'electricite")){
 											c = new Cases(cpt, cas.getNom(), null, (Evenement) new Depenser("Electicite", null, Integer.parseInt(cas.getEvenement().split(",")[1])));
 										}
 										else{
-											//Si la case n'a pas de type, on la créée sans Evenement
+											//Si la case n'a pas de type, on la creee sans Evenement
 											c = new Cases(cpt, cas.getNom(), null, null);
 										}
 									}
@@ -218,8 +218,8 @@ public class Lancement extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Méthode main, instanciant Lancement et permettant du coup l'exécution du jeu
-	 * @param args Le premier argument est le chemin du fichier "monopoly.csv" (config/monopoly.csv), le deuxième le chemin du fichier "cartes.csv" (config/cartes.csv) 
+	 * Methode main, instanciant Lancement et permettant du coup l'execution du jeu
+	 * @param args Le premier argument est le chemin du fichier "monopoly.csv" (config/monopoly.csv), le deuxieme le chemin du fichier "cartes.csv" (config/cartes.csv) 
 	 */
 	public static void main(String [] args){
 		Lancement c = new Lancement(args[0], args[1]);
@@ -229,7 +229,7 @@ public class Lancement extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e){
 		cpt++;
 		
-		//Si l'événement récupéré est de nom "Ajouter"
+		//Si l'evenement recupere est de nom "Ajouter"
 		if(e.getActionCommand().equals("Ajouter")){
 			if(!this.nomJoueur.getText().equals("")) {
 				
@@ -237,11 +237,11 @@ public class Lancement extends JFrame implements ActionListener {
 				new Player(cpt, nomJoueur.getText(), 150000, null);
 				Iterator<Joueur> ite_liste_joueurs = Player.getIterator_Joueurs();
 				
-				//On redéfinie le fond de la liste des joueurs en noir, si jamais il y a eu une pression sur Jouer sans joueurs dans la liste
+				//On redefinie le fond de la liste des joueurs en noir, si jamais il y a eu une pression sur Jouer sans joueurs dans la liste
 				this.liste_joueurs.setForeground(Color.BLACK);
 				this.liste_joueurs.setHorizontalAlignment(SwingConstants.CENTER);
 				
-				//On crée la liste des joueurs visible pour l'utilisateur
+				//On cree la liste des joueurs visible pour l'utilisateur
 				String liste_des_joueurs_string = "<html>";
 				while(ite_liste_joueurs.hasNext()) {
 					liste_des_joueurs_string+=ite_liste_joueurs.next().nom()+"<br>";
@@ -250,10 +250,10 @@ public class Lancement extends JFrame implements ActionListener {
 				
 				//Et on montre la liste des joueurs à l'utilisateur
 				liste_joueurs.setText(liste_des_joueurs_string);
-				//Le nom du joueur est remis à 0, afin de permettre la rentrée d'un nouvel utilisateur
+				//Le nom du joueur est remis à 0, afin de permettre la rentree d'un nouvel utilisateur
 				nomJoueur.setText("");
 				
-				//Des joueurs sont présents, nous pouvons jouer (Activation du bouton)
+				//Des joueurs sont presents, nous pouvons jouer (Activation du bouton)
 				this.jouer.setEnabled(true);
 			}
 		}
@@ -261,18 +261,18 @@ public class Lancement extends JFrame implements ActionListener {
 			//Si la liste des joueurs n'est pas vide
 			if(!Player.joueurs.isEmpty()) {
 				this.setVisible(false);
-				//On créé les groupes
+				//On cree les groupes
 				creerGroupes();
-				//On créé les cases
+				//On cree les cases
 				creerCases();
-				//On créé les cartes
+				//On cree les cartes
 				creerCartes();
 				
-				//On place les joueurs sur la case départ
+				//On place les joueurs sur la case depart
 				for(Joueur p : Player.joueurs){
 					p.placerSur(Cases.cases.get(0));
 				}
-				//Et on créé l'interface
+				//Et on cree l'interface
 				creerGui();
 				
 				//Si la liste est vide ..
