@@ -28,7 +28,7 @@ import monopoly.jeu.Case;
 import monopoly.jeu.Joueur;
 import monopoly.jeu.Player;
 /**
- * Classe Plateau, l'interface graphique du Monopoly, celle-ci implémente ActionListener
+ * Classe Plateau, l'interface graphique du Monopoly, celle-ci implï¿½mente ActionListener
  * @author Aymeric Joubert / Axel Delerue
  *
  */
@@ -45,15 +45,15 @@ public class Plateau implements ActionListener{
 	JButton lancer;
 
 	/**
-	 * Instanciation de la classe Plateau, celle-ci ayant deux paramètres.
+	 * Instanciation de la classe Plateau, celle-ci ayant deux paramï¿½tres.
 	 * La classe Plateau correspond au plateau graphique du jeu.
-	 * @param type Soit dans ce cas précis "monopoly", cela permet d'indiquer que nous utiliserons le fichier "monopoly.csv".
-	 * @param fichier Soit dans ce cas précis, le chemin d'accès au fichier "monopoly.csv" (De base "config/monopoly.csv").
+	 * @param type Soit dans ce cas prï¿½cis "monopoly", cela permet d'indiquer que nous utiliserons le fichier "monopoly.csv".
+	 * @param fichier Soit dans ce cas prï¿½cis, le chemin d'accï¿½s au fichier "monopoly.csv" (De base "config/monopoly.csv").
 	 */
 	public Plateau(String type, String fichier){
 		this.type = type;
 		this.fichier = fichier;
-		fenetre = new JFrame("Monopoly");
+		fenetre = new JFrame("DA2IPOLY");
 		Game=this;
 		//Le joueur en cours est le premier de la liste
 		joueurEnCours = Player.joueurs.get(0);
@@ -65,8 +65,8 @@ public class Plateau implements ActionListener{
 	}
 	
 	/**
-	 * Permet la récupération d'un Itérator parcourant les cases du plateau.
-	 * @return Itérator des JPanels contenant les cases du plateau.
+	 * Permet la rï¿½cupï¿½ration d'un Itï¿½rator parcourant les cases du plateau.
+	 * @return Itï¿½rator des JPanels contenant les cases du plateau.
 	 */
 	public Iterator<JPanel> cases_du_plateau() {
 		Iterator<JPanel> ite = cases.iterator();
@@ -75,26 +75,26 @@ public class Plateau implements ActionListener{
 
 
 	/**
-	 * Permet la création des différents JPanels, ceux-ci étant placés dans une GridBag.
-	 * Cette méthode permet de créer les objets visuels.
+	 * Permet la crï¿½ation des diffï¿½rents JPanels, ceux-ci ï¿½tant placï¿½s dans une GridBag.
+	 * Cette mï¿½thode permet de crï¿½er les objets visuels.
 	 */
 	public void make(){
 		fenetre.setResizable(true);
 		fenetre.setExtendedState(fenetre.MAXIMIZED_BOTH);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel plate = new JPanel();
-		//On définit en Layout le GridBagLayout
+		//On dï¿½finit en Layout le GridBagLayout
 		plate.setLayout(new GridBagLayout());
 		//Lecture du fichier de configuration du plateau
 		try{
 			Carte_CSV carte = new Carte_CSV();
 
-			//Implémentation dans le plateau
+			//Implï¿½mentation dans le plateau
 			ArrayList<Monopoly_Model> plateau = (ArrayList<Monopoly_Model>)carte.instanciation_liste_cartes(type, fichier);
 			Monopoly_Model plat;
 
 			GridBagConstraints gbc = new GridBagConstraints();
-			//On positionne la case de départ du composant
+			//On positionne la case de dï¿½part du composant
 			gbc.gridx = 0;
 			gbc.gridy = 10;
 			//Le nombre de case en hauteur et en largeur qu'une case occupe
@@ -261,32 +261,32 @@ public class Plateau implements ActionListener{
 			gbc.gridheight = 9;
 			gbc.gridwidth = 9;
 			
-			//Permet de stocker les différents JPanel dans un global (celui-ci)
+			//Permet de stocker les diffï¿½rents JPanel dans un global (celui-ci)
 			JPanel interieur = new JPanel(new BorderLayout());
 			
-			//Permet d'afficher les différents éléments de jeu pour chaque personne, comme l'argent, le 
+			//Permet d'afficher les diffï¿½rents ï¿½lï¿½ments de jeu pour chaque personne, comme l'argent, le 
 			JPanel infosJeu = new JPanel(new GridLayout(1,3));
 			
 			//Permet d'indiquer quel est le joueur courant
 			JPanel infoUser = new JPanel(new GridLayout(1,1));
 			
-			//Permet le placement des différentes images au centre du plateau
+			//Permet le placement des diffï¿½rentes images au centre du plateau
 			JPanel deco = new JPanel(new GridLayout(1,3));
 			deco.setBackground(new Color(204,229,218));
 			
 			//Image principale, au centre du plateau de jeu.
-			ImageIcon monopoly = new ImageIcon(new ImageIcon("monopoly.jpg").getImage().getScaledInstance(230, 300, Image.SCALE_DEFAULT));
+			ImageIcon monopoly = new ImageIcon(new ImageIcon("monopoly2.jpg").getImage().getScaledInstance(230, 300, Image.SCALE_DEFAULT));
 		
-			//On ajoute les différentes images, "chance", "monopoly" et "communaute"
+			//On ajoute les diffï¿½rentes images, "chance", "monopoly" et "communaute"
 			deco.add(new JLabel(new ImageIcon("chance.gif")));
 			deco.add(new JLabel(monopoly));
 			deco.add(new JLabel(new ImageIcon("communaute.gif")));	
 			
-			//Argent que l'utilisateur courant possède
+			//Argent que l'utilisateur courant possï¿½de
 			this.argent = new JLabel("Argent : "+joueurEnCours.especes());
 			
-			//La valeur des dès que l'utilisateur aura tiré sera affiché dans ce JLabel
-			this.des = new JLabel("Dès : 0");
+			//La valeur des dï¿½s que l'utilisateur aura tirï¿½ sera affichï¿½ dans ce JLabel
+			this.des = new JLabel("Dï¿½s : 0");
 			
 			//On affiche aussi le joueur courant, au dessus du milieu du plateau (En gros, au dessus des trois images)
 			this.joueurcourant = new JLabel("Joueur courant : "+joueurEnCours.nom());
@@ -298,7 +298,7 @@ public class Plateau implements ActionListener{
 			infosJeu.add(des);
 			infoUser.add(joueurcourant);
 			
-			//On place tout à l'"intérieur".
+			//On place tout ï¿½ l'"intï¿½rieur".
 			interieur.add(infoUser, BorderLayout.NORTH);
 			interieur.add(deco, BorderLayout.CENTER);
 			interieur.add(infosJeu, BorderLayout.SOUTH);
@@ -308,24 +308,24 @@ public class Plateau implements ActionListener{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		//On peut afficher la fenêtre avec le plateau de jeu créé.
+		//On peut afficher la fenï¿½tre avec le plateau de jeu crï¿½ï¿½.
 		fenetre.setContentPane(plate);
 		fenetre.setVisible(true);
 	}
 
 	/**
-	 * Permet d'affecté une valeur au JLabel où est stocké la valeur de dès que l'utilisateur vient de tirer.
-	 * @param valeur La valeur des dès
+	 * Permet d'affectï¿½ une valeur au JLabel oï¿½ est stockï¿½ la valeur de dï¿½s que l'utilisateur vient de tirer.
+	 * @param valeur La valeur des dï¿½s
 	 */
 	public void attribuerDes(int valeur) {
-		this.des.setText("Dès : "+valeur);
+		this.des.setText("Dï¿½s : "+valeur);
 		make();
 	}
 
 	/**
-	 * Permet de mettre la valeur des différentes case en HTML et donc de profiter du saut à la ligne, celui-ci n'étant pas possible avec "\n" dans le JLabel.
-	 * La case peut déborder de texte si cette méthode n'est pas affectée pour la création de chaque case. 
-	 * @param p Quelle est la chaine de caractère a "caster" en html ?
+	 * Permet de mettre la valeur des diffï¿½rentes case en HTML et donc de profiter du saut ï¿½ la ligne, celui-ci n'ï¿½tant pas possible avec "\n" dans le JLabel.
+	 * La case peut dï¿½border de texte si cette mï¿½thode n'est pas affectï¿½e pour la crï¿½ation de chaque case. 
+	 * @param p Quelle est la chaine de caractï¿½re a "caster" en html ?
 	 * @param p2 Au bout de combien de mots se fait la coupure ?
 	 * @return
 	 */
@@ -345,10 +345,10 @@ public class Plateau implements ActionListener{
 
 	
 	/**
-	 * Permet de récupérer un objet de type Color en mettant en paramètre le nom d'une couleur.
-	 * Cela permet d'attribuer la bonne couleur à chaque case du plateau.
-	 * @param p Correspond à la couleur voulue (Celle-ci étant donnée dans une chaine de caractère)
-	 * @return La couleur voulue par l'utilisateur via le paramètre
+	 * Permet de rï¿½cupï¿½rer un objet de type Color en mettant en paramï¿½tre le nom d'une couleur.
+	 * Cela permet d'attribuer la bonne couleur ï¿½ chaque case du plateau.
+	 * @param p Correspond ï¿½ la couleur voulue (Celle-ci ï¿½tant donnï¿½e dans une chaine de caractï¿½re)
+	 * @return La couleur voulue par l'utilisateur via le paramï¿½tre
 	 */
 	public Color couleur(String p){
 		//Si la couleur est "jaune"
@@ -387,13 +387,13 @@ public class Plateau implements ActionListener{
 	}
 
 	/**
-	 * Permet l'exécution du "jeu" à proprement parler.
+	 * Permet l'exï¿½cution du "jeu" ï¿½ proprement parler.
 	 */
 	public void jeu(){
 		int cptJoueurs;
 		boolean tourr = true;
 
-		//Si le joueur n'est pas éliminé que son tour continue
+		//Si le joueur n'est pas ï¿½liminï¿½ que son tour continue
 		if(!joueurEnCours.elimine() && tourr==true){
 			//On fait jouer le joueur en cours
 			jouer(joueurEnCours);					
@@ -402,7 +402,7 @@ public class Plateau implements ActionListener{
 		cptJoueurs=0;
 		//Pour chaque joueurs de la liste des joueurs
 		for (Joueur j : Player.joueurs){
-			//Si le joueur n'est pas éliminé, on incrémente le compteur.
+			//Si le joueur n'est pas ï¿½liminï¿½, on incrï¿½mente le compteur.
 			if (!j.elimine()){
 				cptJoueurs++;
 			}
@@ -418,16 +418,16 @@ public class Plateau implements ActionListener{
 	}
 
 	/**
-	 * Exécute la pile d'événements pour l'utilisateur, tout en lui rajoutant évidemment un tirage de dès afin de lui permettre d'avancer.
-	 * @param j Le joueur courant généralement (Méthode appelé via jeu()), sinon le joueur qu'il faut faire jouer.
+	 * Exï¿½cute la pile d'ï¿½vï¿½nements pour l'utilisateur, tout en lui rajoutant ï¿½videmment un tirage de dï¿½s afin de lui permettre d'avancer.
+	 * @param j Le joueur courant gï¿½nï¿½ralement (Mï¿½thode appelï¿½ via jeu()), sinon le joueur qu'il faut faire jouer.
 	 */
 	public void jouer(Joueur j){
 		j.chosesAFaire().push(((Evenement)new TireDes(j)));
-		//Tant que la liste des choses à faire du joueur n'est pas vide.
+		//Tant que la liste des choses ï¿½ faire du joueur n'est pas vide.
 		while (!j.chosesAFaire().isEmpty()){
-			//On exécute la pile de choses à faire.
+			//On exï¿½cute la pile de choses ï¿½ faire.
 			j.chosesAFaire().pop().executer();
-			//On affiche le dernier lancé de l'utilisateur.
+			//On affiche le dernier lancï¿½ de l'utilisateur.
 			this.des.setText(((Integer)TireDes.DernierLancer).toString());
 		}
 	}
