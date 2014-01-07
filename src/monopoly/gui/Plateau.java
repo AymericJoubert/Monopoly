@@ -53,7 +53,7 @@ public class Plateau implements ActionListener{
 	public Plateau(String type, String fichier){
 		this.type = type;
 		this.fichier = fichier;
-		fenetre = new JFrame("DA2IPOLY");
+		fenetre = new JFrame("DA2I-POLY");
 		Game=this;
 		//Le joueur en cours est le premier de la liste
 		joueurEnCours = Player.joueurs.get(0);

@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import monopoly.evenements.Carte;
 import monopoly.evenements.Evenement;
 import monopoly.evenements.Emprisonnement;
@@ -68,9 +71,20 @@ public class Player implements Joueur {
 		return elimine;
 	}
 
-	/** Elimine le joueur de la partie */
+	/** Elimine le joueur de la partie, termine la partie s'il ne reste plus qu'un joueur */
 	public void eliminer(){
 		elimine = true;
+		int cpt=0;
+		Joueur jou = null;
+		for(Joueur j : Player.joueurs){
+			if(!j.elimine()){
+				cpt++;
+				jou = j;
+			}
+		}
+		if(cpt==1){
+			JOptionPane.showMessageDialog(new JFrame(), jou.nom()+"- Vous avez gagné ! Félicitations !");
+		}
 	}
 
 	/** Retourne le montant de l'argent possédé par le joueur */
