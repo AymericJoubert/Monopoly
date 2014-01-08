@@ -11,7 +11,7 @@ import monopoly.jeu.Cases;
 import monopoly.jeu.Joueur;
 
 /**
- * Classe permettant de tirer les des, celle-ci implémente Evenement.
+ * Classe permettant de tirer les des, celle-ci implï¿½mente Evenement.
  * @author Aymeric Joubert / Axel Delerue
  *
  */
@@ -28,12 +28,12 @@ public class TireDes implements Evenement {
 		this.j = j;
 	}
 
-	/** Retourne l'intitulé de l'évenement */
+	/** Retourne l'intitulï¿½ de l'ï¿½venement */
 	public String nom(){
 		return "Tire les des !";
 	}
 
-	/** Retourne la cible de l'évenement */
+	/** Retourne la cible de l'ï¿½venement */
 	public Joueur cible(){
 		return j;
 	}
@@ -48,18 +48,22 @@ public class TireDes implements Evenement {
 	public void executer(){
 		Random r = new Random();
 		nbCases = r.nextInt(11)+2;
+		//Si le joueur n'est pas en prison
 		if(!j.enPrison()){
+			//Si le joueur a depasse la case depart (case>39) alors il recoit 20000
 			if((j.position().numero()+nbCases)>39){
-				JOptionPane.showMessageDialog(new JFrame(), "Vous êtes passé par la case Depart, vous recevez 20000 F");
+				JOptionPane.showMessageDialog(new JFrame(), "Vous ï¿½tes passï¿½ par la case Depart, vous recevez 20000 F");
 				j.chosesAFaire().push(new Recette("Depart", j, 20000));
 			}
 			TireDes.DernierLancer = nbCases;
 			j.chosesAFaire().push(new DeplacementRelatif(j));
+			//Si le joueur fait 12
 			if(TireDes.DernierLancer == 12){
 				JOptionPane.showMessageDialog(new JFrame(), "Vous avez fait un 12 ! Vous pouvez rejouer.");
 				j.chosesAFaire().push(new TireDes(j));
 			}
 		}
+		//Sinon, le joueur doit faire 12 ou tirer les des deux fois pour sorir de prison
 		else{
 			TireDes.DernierLancer = nbCases;
 			Emprisonnement.PRISON.put(cible(), Emprisonnement.PRISON.get(cible()) + 1);
