@@ -11,15 +11,17 @@ Ouvrir un terminal, se placer dans le repertoire souhaité, entrer les commandes
 
 git clone https://github.com/AymericJoubert/Monopoly.git
 
-javac -sourcepath sources -d classes sources/monopoly/csv/*.java
+cd Monopoly
 
-javac -sourcepath sources -d classes sources/monopoly/evenements/*.java
+javac -sourcepath src -d classes src/monopoly/csv/*.java
 
-javac -sourcepath sources -d classes sources/monopoly/gui/*.java
+javac -sourcepath src -d classes src/monopoly/evenements/*.java
 
-javac -sourcepath sources -d classes sources/monopoly/jeu/*.java
+javac -sourcepath src -d classes src/monopoly/gui/*.java
 
-javac -sourcepath sources -d classes sources/monopoly/proprietes/*.java
+javac -sourcepath src -d classes src/monopoly/jeu/*.java
+
+javac -sourcepath src -d classes src/monopoly/proprietes/*.java
 
 java -classpath classes Lancement config/monopoly.csv config/cartes.csv
 
@@ -31,5 +33,7 @@ Ouvrir un terminal, se placer dans le repertoire souhaité, entrer les commandes
 
 
 git clone https://github.com/AymericJoubert/Monopoly.git
+
+cd Monopoly
 
 java -jar Monopoly.jar
