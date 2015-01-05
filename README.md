@@ -23,7 +23,7 @@ javac -sourcepath src -d classes src/monopoly/jeu/*.java
 
 javac -sourcepath src -d classes src/monopoly/proprietes/*.java
 
-java -classpath classes Lancement config/monopoly.csv config/cartes.csv
+java -classpath classes monopoly.gui.Lancement config/monopoly.csv config/cartes.csv
 
 
 Compiler les sources et lancer le jeu avec le jar
